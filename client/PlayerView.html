@@ -1,52 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Player's View </title>
-     <!-- Tailwind CSS CDN (okay for development, not production) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- External Stylesheet -->
-    <link rel="stylesheet" href="styles/Player.css" />
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Laser Tag Player View</title>
+  <link rel="stylesheet" href="styles/Player.css" />
 </head>
 <body>
-    <div class=" game-container flex flex-col items-center justify-center min-h-screen p-4 bg-black text-white">
-        <header>
-            <h1 class="retro-heading text-4xl sm:text-5xl font-bold mb-8 text-cyan-400">Laser Tag Royale</h1>
+  <div id="player-view">
+    <!-- Top HUD -->
+    <header id="hud" class="retro-heading text-4xl sm:text-5xl font-bold mb-8 text-cyan-400">
+      <div id="team-red-score">TEAM RED'S SCORE: 0</div>
+      <div id="timer">TIME LEFT: 01:00</div>
+      <div id="team-blue-score">TEAM BLUE'S SCORE: 0</div>
+    </header>
 
-            <div class="retro-heading">
-                <p>Score: 0       Username:         Time Left: 01:00 </p>
-            </div>
-        </header>
+    <!-- Crosshair (Center Viewfinder) -->
+    <div id="crosshair">
+        <video src="images/Dummy-image.jpg"></video>
+    </div>
 
-        <div class="target-area">
-           <!-- <video id="camera" autoplay playsinline></video>
-            <canvas id="overlay"></canvas> -->
-            <img src="images/Dummy-image.jpg" height="250px" width="200px">
-        </div>
+    <!-- Shoot Button -->
+    <button id="shoot-button" class="btn text-xl sm:text-2xl font-bold py-3 px-6 rounded-lg w-full max-w-xs transition transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-purple-600 bg-indigo-700">SHOOT!</button>
 
-        <footer>
-            <button id="shoot-btn" class="btn text-xl sm:text-2xl font-bold py-3 px-6 rounded-lg w-full max-w-xs transition transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-purple-600 bg-indigo-700">Shoot!</button>
-        
+    <!-- Footer Ribbon -->
+    <footer id="bottom-ribbon">
+      <div id="status-label"></div>
+      <div id="team-label">YOUR TEAM: --</div>
+    </footer>
 
-            <audio id="hit-sound" src="hit.mp3"></audio>
-            <audio id="shoot-sound" src="shoot.mp3"></audio>
-        </footer>
+    <!-- Sound Effects -->
+    <audio id="sfx-hit" src="sounds/hit.mp3" preload="auto"></audio>
+    <audio id="sfx-miss" src="sounds/miss.wav" preload="auto"></audio>
   </div>
 
-
-    <!--Link to the scripts-->
-    <script src="scripts/vision.js"></script>
-    <script src= "scripts/playerState.js"></script>
-    <script src="scripts/app.js"></script>
-    <script src="scripts/feedback.js"></script>
-    <script src="scripts/uiupdate.js"></script>
-    <script src="scripts/CameraAccess.js"></script>
-    <script src="scripts/DetectionTags.js"></script>
-
+  <!-- Game Logic -->
+  <script src="scripts/game.js"></script>
 </body>
 </html>
